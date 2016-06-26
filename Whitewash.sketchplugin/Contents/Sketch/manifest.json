@@ -1,0 +1,24 @@
+{
+  "author" : "Ian Kitchen",
+  "commands" : [
+    {
+      "script" : "script.cocoascript",
+      "name" : "Whitewash",
+      "handlers" : {
+        "run" : "onRun"
+      },
+      "identifier" : "com.bohemiancoding.sketch.runscriptidentifier"
+    }
+  ],
+  "menu" : {
+    "items" : [
+      "com.bohemiancoding.sketch.runscriptidentifier"
+    ],
+    "title" : "Whitewash"
+  },
+  "identifier" : "com.example.sketch.00eeb419-6a9b-46c3-88d1-244abed58842",
+  "version" : "1.0",
+  "description" : "turn it all white",
+  "authorEmail" : "ian@oceanrain.com",
+  "name" : "Whitewash"
+}
