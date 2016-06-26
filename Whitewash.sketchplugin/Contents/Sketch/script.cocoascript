@@ -27,5 +27,13 @@ var onRun = function(context) {
 			fill.type = 0;
 			fill.color = MSColor.colorWithSVGString("#FFFFFF"); 
 	   	}
+	   	
+	   	var border = layer.style().borders().firstObject();
+	   	
+	   	if(border)
+	   	{
+		   	border.color = MSColor.colorWithSVGString("#FFFFFF"); 
+	   	}
+	   	
 	}
 };
