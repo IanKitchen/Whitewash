@@ -32,7 +32,7 @@ var onRun = function(context) {
 	   	
 	   	if(border)
 	   	{
-		   	border.color = MSColor.colorWithSVGString("#FFFFFF"); 
+		   	border.color = MSColor.colorWithSVGString("#0000FF"); 
 	   	}
 	   	
 	}
