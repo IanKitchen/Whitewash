@@ -2,24 +2,18 @@ var onRun = function(context) {
   
 	var doc = context.document;
 	var page = [doc currentPage];
-	
 	var selection = context.selection;
-	var layer = selection.firstObject();
 	
-	if(layer && layer.isKindOfClass(MSShapeGroup)) {
-		
-	    var shape=layer.layers().firstObject();
-	    
-	    if(shape && shape.isKindOfClass(MSRectangleShape)) 
-	    {
-	        var size = 1;
-	    }
-	    else
-	    {
-		 	var fill = layer.style().addStylePartOfType(0);    
-	    }
-	    
-	    
+	//var layer = selection.firstObject();
+	
+	//if(layer && layer.isKindOfClass(MSShapeGroup))
+
+	
+	// loop though each layer in the selection
+	for (var i=0; i<[selection count]; i++) 
+	{
+	    var layer = selection[i];
+	  
 	   	var fill = layer.style().fills().firstObject();
 	   	
 	   	if(fill)
@@ -34,6 +28,5 @@ var onRun = function(context) {
 	   	{
 		   	border.color = MSColor.colorWithSVGString("#0000FF"); 
 	   	}
-	   	
 	}
 };
