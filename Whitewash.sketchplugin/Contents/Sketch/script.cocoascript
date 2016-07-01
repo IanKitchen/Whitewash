@@ -3,30 +3,30 @@ var onRun = function(context) {
 	var doc = context.document;
 	var page = [doc currentPage];
 	var selection = context.selection;
-	
-	//var layer = selection.firstObject();
-	
-	//if(layer && layer.isKindOfClass(MSShapeGroup))
 
-	
+
 	// loop though each layer in the selection
 	for (var i=0; i<[selection count]; i++) 
 	{
 	    var layer = selection[i];
-	  
-	   	var fill = layer.style().fills().firstObject();
-	   	
-	   	if(fill)
-	   	{
-			fill.type = 0;
-			fill.color = MSColor.colorWithSVGString("#FFFFFF"); 
-	   	}
-	   	
-	   	var border = layer.style().borders().firstObject();
-	   	
-	   	if(border)
-	   	{
-		   	border.color = MSColor.colorWithSVGString("#0000FF"); 
-	   	}
+
+		if(layer && layer.isKindOfClass(MSShapeGroup))
+	    {
+		   	var fill = layer.style().fills().firstObject();
+		   	
+		   	if(fill)
+		   	{
+				fill.type = 0;
+				fill.color = MSColor.colorWithSVGString("#FFFFFF"); 
+		   	}
+		   	
+		   	var border = layer.style().borders().firstObject();
+		   	
+		   	if(border)
+		   	{
+			   	border.color = MSColor.colorWithSVGString("#FFFFFF"); 
+		   	}
+		}
+
 	}
 };
