@@ -28,20 +28,5 @@ var onRun = function(context) {
 		   	}
 		}
 
-	   	var fill = layer.style().fills().firstObject();
-	   	
-	   	if(fill)
-	   	{
-			fill.type = 0;
-			fill.color = MSColor.colorWithSVGString("#FFFFFF"); 
-	   	}
-	   	
-	   	var border = layer.style().borders().firstObject();
-	   	
-	   	if(border)
-	   	{
-		   	border.color = MSColor.colorWithSVGString("#0000FF"); 
-	   	}
-
 	}
 };
