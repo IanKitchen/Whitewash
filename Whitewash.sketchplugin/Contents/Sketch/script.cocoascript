@@ -3,6 +3,7 @@ var onRun = function(context) {
 	var doc = context.document;
 	var page = [doc currentPage];
 	var selection = context.selection;
+	var app = [NSApplication sharedApplication];
 
 
 	// loop though each layer in the selection
@@ -12,21 +13,55 @@ var onRun = function(context) {
 
 		if(layer && layer.isKindOfClass(MSShapeGroup))
 	    {
-		   	var fill = layer.style().fills().firstObject();
-		   	
-		   	if(fill)
-		   	{
-				fill.type = 0;
-				fill.color = MSColor.colorWithSVGString("#FFFFFF"); 
-		   	}
-		   	
-		   	var border = layer.style().borders().firstObject();
-		   	
-		   	if(border)
-		   	{
-			   	border.color = MSColor.colorWithSVGString("#FFFFFF"); 
-		   	}
+			whitewash(layer);
 		}
+		else if(layer.className().toString() == "MSLayerGroup") 
+		{
+			var children = layer.layers().array();
+			
+			process_groups(children);
 
+			//[app displayDialog:"Group done" withTitle:"Message"];	
+		}
 	}
 };
+
+
+function process_groups(group){
+	
+	// loop though each layer in the group
+	for (var i=0; i<[group count]; i++) 
+	{
+	    var layer = group[i];
+
+		if(layer && layer.isKindOfClass(MSShapeGroup))
+	    {
+			whitewash(layer);
+		}
+		else if(layer.className().toString() == "MSLayerGroup") 
+		{
+			[app displayDialog:"Group" withTitle:"Message"];							
+			var children = layer.layers().array();			
+			process_groups(children);
+		}
+	}
+}
+
+
+function whitewash(layer){
+	
+		var fill = layer.style().fills().firstObject();
+	   	
+	   	if(fill)
+	   	{
+			fill.type = 0;
+			fill.color = MSColor.colorWithSVGString("#FFFFFF"); 
+	   	}
+	   	
+	   	var border = layer.style().borders().firstObject();
+	   	
+	   	if(border)
+	   	{
+		   	border.color = MSColor.colorWithSVGString("#FFFFFF"); 
+	   	}
+}
