@@ -55,7 +55,7 @@ function whitewash(layer){
 	   	if(fill)
 	   	{
 			fill.type = 0;
-			fill.color = MSColor.colorWithSVGString("#FFFFFF"); 
+			fill.color = MSColor.colorWithSVGString("#8888FF"); 
 	   	}
 	   	
 	   	var border = layer.style().borders().firstObject();
