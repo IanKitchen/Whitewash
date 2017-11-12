@@ -38,4 +38,5 @@ function onRun(context)  {
 		   	border.color = MSColor.colorWithNSColor(NSColor.colorWithGray(0.8));
 	   	}
 	}
+	[doc showMessage:"Done"]
 };
