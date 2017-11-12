@@ -1,24 +1,20 @@
 {
-  "author" : "Ian Kitchen",
-  "commands" : [
+  "name": "Whitewash",
+  "description": "Lighten everything",
+  "author": "Ian Kitchen",
+  "homepage": " ",
+  "version": 1.2,
+  "identifier": "www.oceanrain.com.whitewash",
+  "compatibleVersion": 3.4,
+  "bundleVersion": 1,
+  "commands": [
     {
-      "script" : "script.cocoascript",
-      "name" : "Whitewash",
+      "name": "Whitewash",
+      "identifier": "all",
+      "script": "script.cocoascript",
       "handlers" : {
         "run" : "onRun"
       },
-      "identifier" : "com.bohemiancoding.sketch.runscriptidentifier"
-    }
+    },
   ],
-  "menu" : {
-    "items" : [
-      "com.bohemiancoding.sketch.runscriptidentifier"
-    ],
-    "title" : "Whitewash"
-  },
-  "identifier" : "com.example.sketch.00eeb419-6a9b-46c3-88d1-244abed58842",
-  "version" : "1.0",
-  "description" : "turn it all white",
-  "authorEmail" : "ian@oceanrain.com",
-  "name" : "Whitewash"
 }

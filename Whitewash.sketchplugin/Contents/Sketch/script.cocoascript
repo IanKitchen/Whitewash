@@ -1,67 +1,41 @@
-var onRun = function(context) {
-  
+function onRun(context)  {
+
 	var doc = context.document;
 	var page = [doc currentPage];
 	var selection = context.selection;
-	var app = [NSApplication sharedApplication];
+  [doc showMessage:"Hello"]
+	var layer = selection.firstObject();
+
+	if(layer && layer.isKindOfClass(MSShapeGroup))
+  {
+    [doc showMessage:"Shape"]
+  }
+  else
+  {
+    [doc showMessage:"Not Shape"]
+  }
 
 
 	// loop though each layer in the selection
-	for (var i=0; i<[selection count]; i++) 
+	for (var i=0; i<[selection count]; i++)
 	{
-	    var layer = selection[i];
+      [doc showMessage:"Layers " + i]
 
-		if(layer && layer.isKindOfClass(MSShapeGroup))
-	    {
-			whitewash(layer);
-		}
-		else if(layer.className().toString() == "MSLayerGroup") 
-		{
-			var children = layer.layers().array();
-			
-			process_groups(children);
+      var layer = selection[i];
 
-			//[app displayDialog:"Group done" withTitle:"Message"];	
-		}
-	}
-};
+	   	var fill = layer.style().fills().firstObject();
 
-
-function process_groups(group){
-	
-	// loop though each layer in the group
-	for (var i=0; i<[group count]; i++) 
-	{
-	    var layer = group[i];
-
-		if(layer && layer.isKindOfClass(MSShapeGroup))
-	    {
-			whitewash(layer);
-		}
-		else if(layer.className().toString() == "MSLayerGroup") 
-		{
-			[app displayDialog:"Group" withTitle:"Message"];							
-			var children = layer.layers().array();			
-			process_groups(children);
-		}
-	}
-}
-
-
-function whitewash(layer){
-	
-		var fill = layer.style().fills().firstObject();
-	   	
 	   	if(fill)
 	   	{
-			fill.type = 0;
-			fill.color = MSColor.colorWithSVGString("#FFFFFF"); 
+			     fill.type = 0;
+			     fill.color = MSColor.colorWithNSColor(NSColor.colorWithGray(0.4));
 	   	}
-	   	
+
 	   	var border = layer.style().borders().firstObject();
-	   	
+
 	   	if(border)
 	   	{
-		   	border.color = MSColor.colorWithSVGString("#FFFFFF"); 
+		   	border.color = MSColor.colorWithNSColor(NSColor.colorWithGray(0.8));
 	   	}
-}
+	}
+};
