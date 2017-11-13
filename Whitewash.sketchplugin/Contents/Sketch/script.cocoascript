@@ -5,6 +5,8 @@ function onRun(context)  {
 	var selection = context.selection;
   [doc showMessage:"Hello"]
 	var layer = selection.firstObject();
+	var disabledColour = MSColor.colorWithRed_green_blue_alpha(165 / 255, 190 / 255, 225 / 255, 1.0);
+	//not MSColor.colorWithNSColor(NSColor.colorWithGray(0.4));
 
 	if(layer && layer.isKindOfClass(MSShapeGroup))
   {
@@ -24,18 +26,17 @@ function onRun(context)  {
       var layer = selection[i];
 
 	   	var fill = layer.style().fills().firstObject();
-
 	   	if(fill)
 	   	{
 			     fill.type = 0;
-			     fill.color = MSColor.colorWithNSColor(NSColor.colorWithGray(0.4));
+			     fill.color = disabledColour;
 	   	}
 
 	   	var border = layer.style().borders().firstObject();
 
 	   	if(border)
 	   	{
-		   	border.color = MSColor.colorWithNSColor(NSColor.colorWithGray(0.8));
+		   	border.color = disabledColour;
 	   	}
 	}
 	[doc showMessage:"Done"]
