@@ -7,14 +7,17 @@ function onRun(context)  {
 	var layer = selection.firstObject();
 	var disabledColour = MSColor.colorWithRed_green_blue_alpha(187 / 255, 208 / 255, 233 / 255, 1.0);
 
-
-
 	// loop though each layer in the selection
 	for (var i=0; i<[selection count]; i++)
 	{
 		var layer = selection[i];
 		var typeOfLayer = layerType(doc, layer)
-		setStyle(doc, layer, disabledColour)
+		if(typeOfLayer == "Shape") {
+			setStyle(doc, layer, disabledColour)
+		}
+		else if (typeOfLayer == "Group"){
+			processGroup(doc, layer, disabledColour)
+		}
 	}
 
 	[doc showMessage:"Done"]
@@ -36,6 +39,15 @@ function setStyle(document, layer, disabledColour) {
 	}
 }
 
+//Apply to all layers in a group
+function processGroup(doc, layer, disabledColour){
+
+		for (var j = 0; j < layer.layers().count(); j++) {
+			setStyle(doc, layer.layers().objectAtIndex(j), disabledColour)
+		}
+}
+
+//Change layer styles
 function layerType (doc, layer)
 {
 	if(layer && layer.isKindOfClass(MSShapeGroup))
