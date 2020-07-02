@@ -42,6 +42,8 @@ function setStyle(document, layer, count)
 	{
 		border.color = newColourLine;
 	}
+
+	console.log('style set');
 }
 
 //Apply to all layers in a group
